@@ -15,7 +15,7 @@ void setup()
   pinMode(SOLENOID_PIN, OUTPUT);
 
   servo.attach(SERVO_PIN);
-  servo.write(140);
+  servo.write(0);
 } 
 
 bool ReadDataAsInt(char data[], int &intData) 
