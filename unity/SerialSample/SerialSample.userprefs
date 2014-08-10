@@ -1,10 +1,11 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SerialTestClient.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\SerialUtil\ServoController.cs">
     <Files>
-      <File FileName="Assets/Scripts/SerialUtil/DCMotorController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SerialUtil/LEDController.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/SerialTestClient.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SerialTestClient.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SerialUtil\SolenoidController.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SerialUtil\SerialHandler.cs" Line="14" Column="32" />
+      <File FileName="Assets\Scripts\SerialUtil\ServoController.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

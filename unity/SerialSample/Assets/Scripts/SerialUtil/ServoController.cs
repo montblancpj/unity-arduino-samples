@@ -3,8 +3,8 @@ using System.Collections;
 
 public class ServoController {
 	private const string ServoHeader = "s";
-	private const int MinDeg = 88;
-	private const int MaxDeg = 140;
+	private const int MinDeg = 0;
+	private const int MaxDeg = 67;
 
 	static private ServoController s_instance = null;
 
@@ -27,28 +27,19 @@ public class ServoController {
 			return s_instance;
 		}
 	}
-	
-	public void SetDegree(float degree)
-	{
+
+	public void Down() {
 		if(m_handler != null) {
-			var data = m_handler.CreateSendData<float>(ServoHeader, degree);
+			var data = m_handler.CreateSendData<int>(ServoHeader, MinDeg);
 			m_handler.SendData(data);
 		}
 	}
 
-	/// <summary>
-	/// Sets the y.
-	/// </summary>
-	/// <param name="y">dossun y is between 0(top) and 1(bottom).</param>
-	public void SetY(float y)
-	{
+	public void Up () {
 		if(m_handler != null) {
-			if(y >= 0 && y <= 1) {
-				int val = MinDeg + (int)(y * (MaxDeg - MinDeg));
-				var data = m_handler.CreateSendData<int>(ServoHeader, val);
-				m_handler.SendData(data);
-			}
-		}	
+			var data = m_handler.CreateSendData<int>(ServoHeader, MaxDeg);
+			m_handler.SendData(data);
+		}
 	}
 	
 	public void Quit()

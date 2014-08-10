@@ -7,6 +7,7 @@ public class SerialTestClient : MonoBehaviour {
 	private SolenoidController m_solenoidController;
 	
 	public int m_servoValue = 0;
+	private bool servoUp = false;
 	private bool ledOn = false;
 	private bool solenoidOn = false;
 
@@ -23,15 +24,25 @@ public class SerialTestClient : MonoBehaviour {
 				
     void OnGUI() {
 		// Servo Update
-		var val = 0;
-        val = (int)GUI.HorizontalSlider(new Rect(10, 10, 200, 40), m_servoValue, 0, 100);
-		if(val != m_servoValue) {
-			m_servoValue = val;
-			if(m_servoController != null) {
-				m_servoController.SetY((int)(float)m_servoValue * 0.01f);	
-			}
+//		var val = 0;
+//        val = (int)GUI.HorizontalSlider(new Rect(10, 10, 200, 40), m_servoValue, 0, 100);
+//		if(val != m_servoValue) {
+//			m_servoValue = val;
+//			if(m_servoController != null) {
+//				m_servoController.SetY((int)(float)m_servoValue * 0.01f);	
+//			}
+//		}
+//        GUI.Label(new Rect(220, 10, 100, 40), "Servo: " + m_servoValue.ToString());
+
+		// New Servo Update
+		var servoRect = new Rect(10, 10, 50, 40);
+		var tmpServo = GUI.Toggle(servoRect, servoUp, "Servo");
+		if(servoUp != tmpServo) {
+			servoUp = tmpServo;
+			if(servoUp)	m_servoController.Up();
+			else m_servoController.Down();
 		}
-        GUI.Label(new Rect(220, 10, 100, 40), "Servo: " + m_servoValue.ToString());
+
 		
 		// LED Update
 		var ledRect = new Rect(10, 50, 50, 50);
