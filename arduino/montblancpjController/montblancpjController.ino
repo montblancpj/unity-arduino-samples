@@ -1,6 +1,7 @@
 #define SERVO_PIN 9
 #define LED_PIN 13
 #define SOLENOID_PIN 2
+#define BUTTON_PIN 4
 #define BUFFER_SIZE 32
 
 #include <Servo.h>
@@ -13,9 +14,10 @@ void setup()
 
   pinMode(LED_PIN, OUTPUT);
   pinMode(SOLENOID_PIN, OUTPUT);
+  pinMode(BUTTON_PIN, INPUT);
 
   servo.attach(SERVO_PIN);
-  servo.write(0);
+  servo.write(59);
 } 
 
 bool ReadDataAsInt(char data[], int &intData) 
@@ -69,12 +71,17 @@ void loop()
       }
     }
   }
+  
+  if(digitalRead(BUTTON_PIN) == HIGH) {
+      Serial.println("1");
+  } else {
+      Serial.println("0");  
+  }
 } 
 
 void ServoDrive(int val)
 {
   if(val >= 0 && val < 255) {
     servo.write(val);
-    delay(15);
   }
 }
